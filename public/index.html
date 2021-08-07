@@ -6,7 +6,17 @@
     <title>Typescript boilerplate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
+
+  <style>
+    #stage {
+      transform: scaleY(-1);
+    }
+  </style>
+
   <body>
+    <svg id="stage" width="640" height="480" viewBox="-320 -240 640 480">
+      <rect id="backdrop" width="640" height="480" x="-320" y="-240" fill="lightgray"></rect>
+    </svg>
     <script src="/js/app.js" type="module" async defer></script>
   </body>
 </html>
