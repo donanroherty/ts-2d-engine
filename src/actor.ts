@@ -1,3 +1,4 @@
+import { makeSVGElement } from "./lib/svg"
 import { Scene } from "./scene"
 import { Vec2 } from "./types"
 
@@ -13,10 +14,7 @@ interface Actor {
 function createActor(scene: Scene): Actor {
   let name: string = "actor"
   let position: Vec2 = { x: 0, y: 0 }
-
-  const svgRoot = document.createElementNS("http://www.w3.org/2000/svg", "g")
-  svgRoot.setAttribute("name", name)
-  svgRoot.setAttribute("transform", `translate(${position.x} ${position.y})`)
+  const svgRoot = makeSVGElement("g", { name, transform: `translate(${position.x} ${position.y})` })
 
   function getSVG() {
     return svgRoot

@@ -1,4 +1,5 @@
 import { Actor, createActor } from "./actor"
+import { makeSVGElement } from "./lib/svg"
 import { Scene } from "./scene"
 
 function createBallActor(scene: Scene): Actor {
@@ -10,11 +11,8 @@ function createBallActor(scene: Scene): Actor {
   self.draw(makeBallSVG())
 
   function makeBallSVG() {
-    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle")
-    circle.setAttribute("fill", "lightblue")
-    circle.setAttribute("stroke", "blue")
-    circle.setAttribute("r", "30")
-    return [circle]
+    const c = makeSVGElement("circle", { fill: "lightblue", stroke: "blue", r: 30 })
+    return [c]
   }
 
   return self
