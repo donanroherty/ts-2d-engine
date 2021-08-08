@@ -7,6 +7,7 @@ interface Actor {
   getPosition(): Vec2
   setPosition(pos: Vec2): void
   getSVG(): SVGElement
+  draw(elements: SVGElement[]): void
 }
 
 function createActor(scene: Scene): Actor {
@@ -33,9 +34,16 @@ function createActor(scene: Scene): Actor {
     return position
   }
 
-  function setPosition(val: Vec2) {
-    position = val
+  function setPosition(pos: Vec2) {
+    position = pos
     svgRoot.setAttribute("transform", `translate(${position.x} ${position.y})`)
+  }
+
+  function draw(elements: SVGElement[]) {
+    while (svgRoot.firstChild) {
+      svgRoot.firstChild.remove()
+    }
+    elements.forEach((el) => svgRoot.appendChild(el))
   }
 
   return {
@@ -44,6 +52,7 @@ function createActor(scene: Scene): Actor {
     getPosition,
     setPosition,
     getSVG,
+    draw,
   }
 }
 

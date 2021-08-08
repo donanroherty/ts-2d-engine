@@ -1,4 +1,4 @@
-import { createActor } from "./actor"
+import { createBallActor } from "./ballActor"
 import { createScene } from "./scene"
 
 interface Engine {}
@@ -7,7 +7,7 @@ function createEngine(stageEl: SVGSVGElement) {
   const engine: Engine = {}
   const scene = createScene(stageEl)
 
-  scene.addActor(createActor(scene))
+  scene.addActor(createBallActor(scene))
 
   return engine
 }
