@@ -1,3 +1,4 @@
+import { Scene } from "./scene"
 import { Vec2 } from "./types"
 
 interface Actor {
@@ -7,7 +8,7 @@ interface Actor {
   setPosition(pos: Vec2): void
 }
 
-function createActor(): Actor {
+function createActor(scene: Scene): Actor {
   let name: string = "actor"
   let position: Vec2 = { x: 0, y: 0 }
 
