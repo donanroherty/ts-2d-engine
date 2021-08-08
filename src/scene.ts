@@ -11,6 +11,7 @@ function createScene(stageEl: SVGSVGElement): Scene {
 
   function addActor(actor: Actor) {
     actors.add(actor)
+    stageEl.appendChild(actor.getSVG())
   }
 
   function getStage() {

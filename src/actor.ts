@@ -6,11 +6,20 @@ interface Actor {
   setName(val: string): void
   getPosition(): Vec2
   setPosition(pos: Vec2): void
+  getSVG(): SVGElement
 }
 
 function createActor(scene: Scene): Actor {
   let name: string = "actor"
   let position: Vec2 = { x: 0, y: 0 }
+
+  const svgRoot = document.createElementNS("http://www.w3.org/2000/svg", "g")
+  svgRoot.setAttribute("name", name)
+  svgRoot.setAttribute("transform", `translate(${position.x} ${position.y})`)
+
+  function getSVG() {
+    return svgRoot
+  }
 
   function getName() {
     return name
@@ -26,6 +35,7 @@ function createActor(scene: Scene): Actor {
 
   function setPosition(val: Vec2) {
     position = val
+    svgRoot.setAttribute("transform", `translate(${position.x} ${position.y})`)
   }
 
   return {
@@ -33,6 +43,7 @@ function createActor(scene: Scene): Actor {
     setName,
     getPosition,
     setPosition,
+    getSVG,
   }
 }
 
