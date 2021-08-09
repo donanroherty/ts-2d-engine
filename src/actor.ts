@@ -9,6 +9,7 @@ interface Actor {
   setPosition(pos: Vec2): void
   getSVG(): SVGElement
   draw(elements: SVGElement[]): void
+  tick?(deltaTime: number): void
 }
 
 function createActor(scene: Scene): Actor {

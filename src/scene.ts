@@ -3,6 +3,7 @@ import { Actor } from "./actor"
 interface Scene {
   addActor(actor: Actor): void
   getStage(): SVGSVGElement
+  tick?(deltaTime: number): void
 }
 
 function createScene(stageEl: SVGSVGElement): Scene {
@@ -18,9 +19,16 @@ function createScene(stageEl: SVGSVGElement): Scene {
     return stage
   }
 
+  function tick(deltaTime: number) {
+    actors.forEach((actor) => {
+      if (actor.tick) actor.tick(deltaTime)
+    })
+  }
+
   return {
     addActor,
     getStage,
+    tick,
   }
 }
 
